@@ -1,9 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<section data-ng-controller="ContactsController">
 
-</body>
-</html>
+    <form name="contactForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(contactForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && contactForm.firstName.$invalid }">
+            <label mean-token="'create-title'" class="col-md-3 control-label">First Name</label>
+            <div class="col-md-9">
+                <input name="firstName" type="text" class="form-control" data-ng-model="firstName" id="firstName" placeholder="firstName" required>
+                <div ng-show="submitted && contactForm.firstName.$invalid" class="help-block">
+                    <p ng-show="contactForm.firstName.$error.required">First Name is required</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && contactForm.lastName.$invalid }">
+            <label mean-token="'create-title'" class="col-md-3 control-label">Last Name</label>
+            <div class="col-md-9">
+                <input name="lastName" type="text" class="form-control" data-ng-model="lastName" id="lastName" placeholder="lastName" required>
+                <div ng-show="submitted && contactForm.lastName.$invalid" class="help-block">
+                    <p ng-show="contactForm.lastName.$error.required">Last Name is required</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : submitted && contactForm.cellPhone.$invalid }">
+            <label mean-token="'create-title'" class="col-md-3 control-label">Cell Phone </label>
+            <div class="col-md-9">
+                <input name="cellPhone" type="text" class="form-control" data-ng-model="cellPhone" id="cellPhone" placeholder="cellPhone" required>
+                <div ng-show="submitted && contactForm.cellPhone.$invalid" class="help-block">
+                    <p ng-show="contactForm.cellPhone.$error.required">First Name is required</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </div>
+    </form>
+
+ </section>
