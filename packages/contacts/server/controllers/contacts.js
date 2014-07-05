@@ -51,7 +51,7 @@ exports.create = function(req, res) {
  * Update a contact
  */
 exports.update = function(req, res) {
-    var contact= req.article;
+    var contact= req.contact;
 
     contact= _.extend(contact, req.body);
 
@@ -106,4 +106,20 @@ exports.all = function(req, res) {
         res.jsonp(contacts);
 
     });
+
 };
+
+// Addded function to return contacts created by the user only
+
+exports.findByUser = function (req, res){
+    Contact.find({user : req.user }).sort('-created').populate('user', 'name username').exec(function(err, contacts) {
+        if (err) {
+            return res.jsonp(500, {
+                error: 'Cannot list the contacts'
+            });
+        }
+        res.jsonp(contacts);
+
+    });
+};
+
