@@ -1,7 +1,29 @@
 'use strict';
 
+var contacts = require('../controllers/contacts');
+
+
+// Article authorization helpers
+var hasAuthorization = function(req, res, next) {
+    if (!req.user.isAdmin && req.article.user.id !== req.user.id) {
+        return res.send(401, 'User is not authorized');
+    }
+    next();
+};
+
+
 // The Package is past automatically as first parameter
 module.exports = function(Contacts, app, auth, database) {
+
+
+    app.route('/contacts')
+        .get(contacts.all)
+        .post(auth.requiresLogin, contacts.create);
+    app.route('/contacts/:contactId')
+        .get(contacts.show)
+        .put(auth.requiresLogin, hasAuthorization, contacts.update)
+        .delete(auth.requiresLogin, hasAuthorization, contacts.destroy);
+
 
     app.get('/contacts/example/anyone', function(req, res, next) {
         res.send('Anyone can access this');
@@ -23,4 +45,9 @@ module.exports = function(Contacts, app, auth, database) {
             res.send(html);
         });
     });
+
+
+
+    // Finish with setting up the articleId param
+    app.param('contactId', contacts.contact);
 };

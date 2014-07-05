@@ -18,8 +18,25 @@ Contacts.register(function(app, auth, database) {
 
     //We are adding a link to the main menu for all authenticated users
     Contacts.menus.add({
-        title: 'contacts example page',
+        title: 'Contact Package View',
         link: 'contacts example page',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
+
+    //We are adding a link to the main menu for all authenticated users
+    Contacts.menus.add({
+        title: 'Contacts',
+        link: 'all contacts',
+        roles: ['authenticated'],
+        menu: 'main'
+    });
+
+
+    //We are adding a link to the main menu for all authenticated users
+    Contacts.menus.add({
+        title: 'Create New Contact',
+        link: 'create contact',
         roles: ['authenticated'],
         menu: 'main'
     });
