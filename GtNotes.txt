@@ -44,3 +44,10 @@ angular.module('mean.contacts').config(['$stateProvider',
         });
     }
 ]);
+
+
+
+
+Install CLI
+
+mean install meanio
