@@ -1,0 +1,46 @@
+
+// Adding Routes
+
+// The Package is past automatically as first parameter
+module.exports = function(Contacts, app, auth, database) {
+
+    app.get('/contacts/example/anyone', function(req, res, next) {
+        res.send('Anyone can access this');
+    });
+
+    app.get('/contacts/example/auth', auth.requiresLogin, function(req, res, next) {
+        res.send('Only authenticated users can access this');
+    });
+
+    app.get('/contacts/example/admin', auth.requiresAdmin, function(req, res, next) {
+        res.send('Only users with Admin role can access this');
+    });
+
+    app.get('/contacts/example/render', function(req, res, next) {
+        Contacts.render('index', {
+            package: 'contacts'
+        }, function(err, html) {
+            //Rendering a view from the Package server/views
+            res.send(html);
+        });
+    });
+};
+
+
+
+
+Basic configuration of StateProvider
+
+Location : public/routes
+
+
+'use strict';
+
+angular.module('mean.contacts').config(['$stateProvider',
+    function($stateProvider) {
+        $stateProvider.state('contacts example page', {
+            url: '/contacts/example',
+            templateUrl: 'contacts/views/index.html'
+        });
+    }
+]);
