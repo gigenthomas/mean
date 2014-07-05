@@ -59,7 +59,7 @@ angular.module('mean.contacts').config(['$stateProvider',
 
             .state('contact by id', {
                 url: '/contacts/:contactId',
-                templateUrl: 'contacts/views/edit.html',
+                templateUrl: 'contacts/views/view.html',
                 resolve: {
                     loggedin: checkLoggedin
                 }
