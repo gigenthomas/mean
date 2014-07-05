@@ -17,7 +17,7 @@ module.exports = function(Contacts, app, auth, database) {
 
 
     app.route('/contacts')
-        .get(contacts.all)
+        .get(contacts.findByUser)
         .post(auth.requiresLogin, contacts.create);
     app.route('/contacts/:contactId')
         .get(contacts.show)

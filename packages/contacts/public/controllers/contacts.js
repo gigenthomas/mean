@@ -81,6 +81,14 @@ angular.module('mean.contacts').controller('ContactsController', ['$scope','$sta
             });
         };
 
+        $scope.findByUser = function() {
+
+            Contacts.query(function(contacts) {
+                $scope.contacts = contacts;
+            });
+        };
+
+
 
     }
 
