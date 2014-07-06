@@ -72,3 +72,9 @@ git checkout master
 # other branch:
 
 git rebase upstream/master
+
+
+You can merge this Pull Request by running
+===========================================
+
+  git pull https://github.com/lirantal/mean bugfix-user-model-tests-jshint
