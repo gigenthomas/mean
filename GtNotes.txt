@@ -51,3 +51,8 @@ angular.module('mean.contacts').config(['$stateProvider',
 Install CLI
 
 mean install meanio
+
+
+
+git remote add upstream https://github.com/linnovate/mean.git
+====
