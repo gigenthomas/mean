@@ -1,21 +1,48 @@
 <section data-ng-controller="ContactsController" data-ng-init="findByUser()">
-    <ul >
-        <li data-ng-repeat="contact  in contacts ">
-            <span>{{contact.created | date:'medium'}}</span> /
-            <span>{{contact.user.name}}</span>
-            <h2>
-                <a data-ng-href="#!/contacts/{{contact._id}}">{{contact.firstName}}</a>
-                <span data-ng-if="hasAuthorization(contact)">
+
+
+    <div class="page-header">
+        Search: <input ng-model="query"  ng-model="contact.firstName">
+    </div>
+    <p></p>
+    <div class="page-header">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Username</th>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            <tr data-ng-repeat="contact  in contacts | filter:query ">
+                <td><a data-ng-href="#!/contacts/{{contact._id}}">{{contact.firstName}}</a></td>
+                <td>{{contact.lastName}}</td>
+                <td>{{contact.created | date:'medium'}}</td>
+                <td> <span data-ng-if="hasAuthorization(contact)">
                     <a class="btn" href="/#!/contacts/{{contact._id}}/edit">
                         <i class="glyphicon glyphicon-edit"></i>
                     </a>
                     <a class="btn" data-ng-click="remove(contact);">
                         <i class="glyphicon glyphicon-trash"></i>
                     </a>
-                </span>
-            </h2>
-            <div>{{article.content}}</div>
-        </li>
-    </ul>
+                </span></td>
+
+            </tr>
+            </tbody>
+        </table>
+
     <h1 data-ng-hide="!contacts|| contacts.length">No Contacts yet. <br> Why don't you <a href="/#!/contacts/create">Create Contact</a>?</h1>
+    </div>
+
+    <p></p>
+
+
+
 </section>
