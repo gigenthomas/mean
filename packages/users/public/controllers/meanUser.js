@@ -25,7 +25,9 @@ angular.module('mean.users')
                                 window.location = response.redirect;
                                // window.location.reload();
                             }
-                        } else {
+                        }
+                        // Commented by GT
+                        else {
                             $location.url('/');
                            // window.location.reload();
                         }

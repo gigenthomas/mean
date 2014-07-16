@@ -32,6 +32,7 @@ module.exports = function(MeanUser, app, auth, database, passport) {
     // Setting the local strategy route
     app.route('/login')
         .post(passport.authenticate('local', {
+            failureRedirect: '/login', // GT 07/14/2014
             failureFlash: true
         }), function(req, res) {
             res.send({
